@@ -18,7 +18,7 @@ Wrapper of the [Mosquitto](http://mosquitto.org/) library for [Qt](http://www.qt
     gui/qtmosquitto-demo
 
 ## Building with qmake
-    qmake qtmosquitto.pro
+    qmake QtMosquitto.pro
     make
 
 ## Installing the libray
