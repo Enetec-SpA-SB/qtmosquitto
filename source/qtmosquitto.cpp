@@ -184,9 +184,13 @@ bool QtMosquittoClient::doDisconnect()
     return false;
   }
   int rc = mosquitto_disconnect(d->mosq);
-  if (rc != MOSQ_ERR_SUCCESS)
+  if (rc == MOSQ_ERR_NO_CONN)
   {
-    qWarning() << "QtMosquittoClient::doDisconnect: Disconnect failed";
+      qWarning() << "QtMosquittoClient::doDisconnect: Already disconnected";
+  }
+  else if (rc != MOSQ_ERR_SUCCESS)
+  {
+    qWarning() << "QtMosquittoClient::doDisconnect: Disconnect failed" << rc;
     return false;
   }
   d->connected = false;
