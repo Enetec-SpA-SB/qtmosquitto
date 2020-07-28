@@ -5,21 +5,21 @@ Wrapper of the [Mosquitto](http://mosquitto.org/) library for [Qt](http://www.qt
 
 # QtMosquitto on Linux
 
+## Building with qmake (preferable)
+    qmake QtMosquitto.pro
+    make
+    
 ## Building with cmake
     cd build
     cmake -D CMAKE_BUILD_TYPE=Debug ../source
     make
-    gui/qtmosquitto-demo
+    demo/qtmosquitto-demo
 
 ## Building with cmake and different QTDIR
     cd build
     cmake -D CMAKE_BUILD_TYPE=Debug -D QTDIR=/your_home/Qt/5.x/gcc_64/lib/cmake ../source
     make
-    gui/qtmosquitto-demo
-
-## Building with qmake
-    qmake QtMosquitto.pro
-    make
+    demo/qtmosquitto-demo
 
 ## Installing the libray
     cp build/lib/libqtmosquitto.so* /usr/lib/
@@ -40,4 +40,4 @@ Wrapper of the [Mosquitto](http://mosquitto.org/) library for [Qt](http://www.qt
     cd build
     cmake -G "NMake Makefiles" -D CMAKE_BUILD_TYPE=Debug ..\source
     nmake
-    gui\qtmosquitto-demo.exe
+    demo\qtmosquitto-demo.exe
