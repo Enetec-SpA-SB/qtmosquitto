@@ -13,7 +13,7 @@ QT             += core network                  # We use Qt's Core and Network m
 QT             -= gui
 CONFIG         += warn_on \                     # Show all warnings.
                   debug_and_release build_all \ # Build debug and release version of the lib.
-                  silent                        # Build silent.
+                  silent \                      # Build silent.
                   c++11
 LIBS           += -lmosquitto
 
@@ -24,6 +24,7 @@ macx:CONFIG += lib_bundle                       # Create the GDF2 library as a f
 # DEPENDENCIES AND INLCUDES ############################################################################################
 INCLUDEPATH    += /usr/include                  # Our own includes.
 
+QMAKE_CFLAGS_ISYSTEM = -I
 
 # OUTPUT DESTINATIONS ##################################################################################################
 MOC_DIR         = ./build/.moc                  # Qt's meta object compiler files.

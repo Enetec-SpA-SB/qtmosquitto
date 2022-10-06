@@ -139,6 +139,18 @@ bool QtMosquittoClient::setMaxInflightMessages(int max_inflight_messages)
     return true;
 }
 
+bool QtMosquittoClient::setReconnectDelay(int reconnect_delay, int reconnect_delay_max, bool reconnect_exponential_backoff)
+{
+    int rc = mosquitto_reconnect_delay_set(d->mosq, reconnect_delay, reconnect_delay_max, reconnect_exponential_backoff);
+    if (!(rc == MOSQ_ERR_SUCCESS))
+    {
+      qWarning() << "QtMosquittoClient::setReconnectDelay: Failed" << rc;
+      return false;
+    }
+
+    return true;
+}
+
 bool QtMosquittoClient::doConnect(const QString& host, int port, int keepalive)
 {
   if (d->connected)

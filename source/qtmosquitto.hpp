@@ -116,6 +116,14 @@ class QTMOSQUITTO_EXPORT QtMosquittoClient : public QObject
      */
     bool setMaxInflightMessages(int max_inflight_messages);
 
+    /** Set reconnect_delay value.
+     * \param reconnect_delay                   The number of seconds to wait between reconnects.
+     * \param reconnect_delay_max               The maximum number of seconds to wait between reconnects.
+     * \param reconnect_exponential_backoff     Use exponential backoff between reconnect attempts.  Set to true to enable exponential backoff.
+     * \returns True if configuration was accepted, false otherwise.
+     */
+    bool setReconnectDelay(int reconnect_delay, int reconnect_delay_max, bool reconnect_exponential_backoff);
+
     /** Start connecting to the server.
      * Start connecting to the server, the connection will not have completed
      * before the call returns.
