@@ -51,7 +51,9 @@ QtMosquittoClient::QtMosquittoClient(const QString& id, bool clean_session, QObj
   d->mosq = mosquitto_new(idCC, clean_session, this);
   Q_ASSERT(d->mosq);
 
+#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
   d->processTimer.setTimerType(Qt::CoarseTimer);
+#endif
   d->processTimer.setSingleShot(false);
   d->processTimer.setInterval(100);
   connect(&d->processTimer, SIGNAL(timeout()), this, SLOT(process()));
