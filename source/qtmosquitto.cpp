@@ -99,7 +99,9 @@ bool QtMosquittoClient::configureTLS(const QString &cafile, const QString &certf
     QByteArray cafileBA(cafile.toUtf8());
     QByteArray certfileBA(certfile.toUtf8());
     QByteArray keyfileBA(keyfile.toUtf8());
-    int rc = mosquitto_tls_set(d->mosq, cafileBA.data(), NULL, certfileBA.data(), keyfileBA.data(), 0);
+    const char* certfileCC = (certfileBA.size() != 0) ? certfileBA.data() : 0;
+    const char* keyfileCC = (keyfileBA.size() != 0) ? keyfileBA.data() : 0;
+    int rc = mosquitto_tls_set(d->mosq, cafileBA.data(), NULL, certfileCC, keyfileCC, 0);
     if (!(rc == MOSQ_ERR_SUCCESS))
     {
       qWarning() << "QtMosquittoClient::doConnect: Failed to set TLS" << rc;
